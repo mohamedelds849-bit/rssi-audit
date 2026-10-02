@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rapport de securite - rotaskitchen.com</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  background: #eef2f5;
+  line-height: 1.55;
+}
+.wrap { max-width: 900px; margin: 0 auto; padding: 24px 18px 60px; }
+.header {
+  background: linear-gradient(135deg, #1f3a5f 0%, #2c5282 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: 0 8px 24px rgba(31,58,95,0.25);
+}
+.header .h-left { flex: 1 1 320px; }
+.header h1 { margin: 0 0 6px; font-size: 24px; }
+.header .domain { font-size: 18px; font-weight: 600; opacity: 0.95; }
+.header .date { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+.score-badge {
+  flex: 0 0 auto;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border: 5px solid rgba(255,255,255,0.35);
+}
+.score-badge .num { font-size: 46px; font-weight: 800; line-height: 1; }
+.score-badge .max { font-size: 15px; opacity: 0.9; }
+.score-badge .grade { font-size: 15px; font-weight: 700; margin-top: 4px; letter-spacing:1px; }
+.score-badge .word { font-size: 11px; margin-top: 2px; opacity: 0.95; text-align:center; padding:0 6px;}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.resume h2 { margin: 0 0 10px; font-size: 19px; color:#1f3a5f; }
+.resume p { margin: 6px 0; font-size: 16px; }
+.resume .lead { font-size: 17px; font-weight: 600; }
+
+.evolution {
+  margin-top: 14px;
+  background: #f7f9fb;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.evo-arrow { font-size: 18px; font-weight: 800; }
+.evo-delta { font-weight: 700; }
+
+.pastilles { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.pastille {
+  flex: 1 1 120px;
+  min-width: 110px;
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+}
+.pastille-num { display:block; font-size: 30px; font-weight: 800; line-height: 1; }
+.pastille-lbl { display:block; font-size: 13px; margin-top: 4px; font-weight:600; }
+
+.category { margin-top: 26px; }
+.cat-title {
+  font-size: 18px;
+  color: #1f3a5f;
+  border-bottom: 2px solid #d7e0ea;
+  padding-bottom: 8px;
+  margin: 0 0 14px;
+}
+.cat-count { font-size: 13px; font-weight: 500; color:#7f8c8d; }
+
+.finding {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.finding-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.finding-title { font-size: 17px; font-weight: 700; color:#2c3e50; }
+.badge {
+  font-size: 12px; font-weight: 700;
+  padding: 4px 12px; border-radius: 999px;
+  white-space: nowrap; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.patron {
+  font-size: 16px;
+  margin: 8px 0 12px;
+  color: #2c3e50;
+}
+.reco {
+  background: #eafaf1;
+  border: 1px solid #b8e6cd;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 10px 0;
+}
+.reco-lbl { font-weight: 700; color: #1e7d47; font-size: 14px; margin-bottom: 3px; }
+.reco-txt { font-size: 15px; color:#1e5631; }
+
+.tech {
+  margin-top: 8px;
+  background: #f4f6f8;
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+.tech summary {
+  cursor: pointer;
+  font-size: 13px;
+  color: #5a6b7b;
+  font-weight: 600;
+  padding: 4px 0;
+}
+.tech-detail { font-size: 14px; color:#4a5866; margin: 8px 0; }
+.tech-evidence {
+  background: #1f2933;
+  color: #cfe3f0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.footer {
+  margin-top: 34px;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 13px;
+  border-top: 1px solid #d7e0ea;
+  padding-top: 18px;
+}
+.footer .brand {
+  margin-top: 10px;
+  min-height: 34px;
+  color: #b0bcc7;
+  font-size: 12px;
+}
+@media (max-width: 560px) {
+  .score-badge { width: 128px; height: 128px; }
+  .score-badge .num { font-size: 38px; }
+  .header h1 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="h-left">
+      <h1>🛡 Rapport de securite</h1>
+      <div class="domain">rotaskitchen.com</div>
+      <div class="date">Audit realise le 02/10/2026 a 01h58</div>
+    </div>
+    <div class="score-badge" style="background:#c0392b;">
+      <div class="num">37</div>
+      <div class="max">/ 100</div>
+      <div class="grade">Note E</div>
+      <div class="word">A risque</div>
+      <div class="word">🔴</div>
+    </div>
+  </div>
+
+  <div class="card resume">
+    <h2>📝 En resume</h2>
+    <p class="lead">Votre site a 1 probleme important a corriger.</p><p class="">Le plus urgent : DMARC present mais inactif (p=none, mode surveillance).</p><p class="">Note de securite globale : 37/100 (A risque). Chaque point ci-dessous explique quoi faire, simplement.</p>
+    
+    <div class="pastilles"><div class="pastille" style="background:#c0392b;color:#ffffff;opacity:0.45;"><span class="pastille-num">0</span><span class="pastille-lbl">Critique</span></div><div class="pastille" style="background:#e67e22;color:#ffffff;"><span class="pastille-num">1</span><span class="pastille-lbl">Eleve</span></div><div class="pastille" style="background:#f1c40f;color:#4d3b00;"><span class="pastille-num">4</span><span class="pastille-lbl">Moyen</span></div><div class="pastille" style="background:#3498db;color:#ffffff;"><span class="pastille-num">6</span><span class="pastille-lbl">Faible</span></div><div class="pastille" style="background:#27ae60;color:#ffffff;"><span class="pastille-num">7</span><span class="pastille-lbl">Bon point</span></div></div>
+  </div>
+
+  <section class="category"><h2 class="cat-title">🔐 Certificat &amp; chiffrement (SSL/TLS) <span class="cat-count">4 constats</span></h2><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Certificat SSL valide dans le temps</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Bonne nouvelle : le cadenas de securite de votre site est valide et loin d&#x27;expirer. Rien a faire de ce cote.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Verifier que le renouvellement automatique est bien actif.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le certificat est valide jusqu&#x27;au Dec  7 11:33:10 2026 GMT (66 jours restants).</p><pre class="tech-evidence">notAfter=Dec  7 11:33:10 2026 GMT (J-66)</pre></details></div><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Le certificat correspond bien au domaine</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Le cadenas de securite est bien au nom de votre site. Tout est coherent, aucun avertissement pour vos visiteurs.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le domaine rotaskitchen.com figure dans le certificat (rotaskitchen.com, rotaskitchen.com, www.rotaskitchen.com).</p><pre class="tech-evidence">noms=rotaskitchen.com, rotaskitchen.com, www.rotaskitchen.com</pre></details></div><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Protocole de chiffrement moderne : TLSv1.3</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">La technologie de chiffrement de votre site est a jour et sure. Rien a faire de ce cote.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le serveur negocie TLSv1.3 (moderne et sur).</p><pre class="tech-evidence">version negociee=TLSv1.3</pre></details></div><div class="finding" style="border-left:6px solid #7f8c8d;"><div class="finding-head"><span class="finding-title">ℹ Emetteur du certificat : Let&#x27;s Encrypt</span><span class="badge" style="background:#7f8c8d;color:#ffffff;">Info</span></div><p class="patron">Votre certificat de securite a ete delivre par Let&#x27;s Encrypt, une autorite reconnue. C&#x27;est une information, pas un probleme.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action. Info fournie a titre de transparence.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le certificat a ete emis par : Let&#x27;s Encrypt.</p><pre class="tech-evidence">issuer=Let&#x27;s Encrypt</pre></details></div></section><section class="category"><h2 class="cat-title">🛡 En-tetes de securite du site <span class="cat-count">8 constats</span></h2><div class="finding" style="border-left:6px solid #f1c40f;"><div class="finding-head"><span class="finding-title">❌ En-tete HSTS absent</span><span class="badge" style="background:#f1c40f;color:#4d3b00;">Moyen</span></div><p class="patron">Sans cette protection, un pirate present sur un wifi public (cafe, aeroport) peut intercepter ou detourner la connexion de vos visiteurs vers une fausse version de votre site.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Ajouter l&#x27;en-tete Strict-Transport-Security (ex: max-age=31536000; includeSubDomains).</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">L&#x27;en-tete de securite &#x27;Strict-Transport-Security&#x27; est absent de la reponse.</p></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">❌ En-tete X-Frame-Options absent</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Sans cette protection, votre site peut etre affiche dans un cadre cache sur un site pirate pour tromper vos visiteurs et leur faire cliquer sur des boutons a leur insu (clickjacking).</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Ajouter X-Frame-Options: SAMEORIGIN (ou la directive frame-ancestors dans la CSP).</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">L&#x27;en-tete de securite &#x27;X-Frame-Options&#x27; est absent de la reponse.</p></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">❌ En-tete X-Content-Type-Options absent</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Sans cette protection, le navigateur peut mal interpreter certains fichiers et executer du code non prevu, ce qui ouvre la porte a des attaques.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Ajouter X-Content-Type-Options: nosniff.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">L&#x27;en-tete de securite &#x27;X-Content-Type-Options&#x27; est absent de la reponse.</p></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">❌ En-tete Referrer-Policy absent</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Sans cette protection, votre site peut divulguer aux autres sites les adresses exactes que visitent vos utilisateurs, ce qui pose un probleme de confidentialite.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Ajouter Referrer-Policy: strict-origin-when-cross-origin.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">L&#x27;en-tete de securite &#x27;Referrer-Policy&#x27; est absent de la reponse.</p></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">⚠ Le serveur divulgue sa version logicielle</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Votre site annonce publiquement les versions exactes de ses logiciels. Un pirate lit cette info pour cibler des failles connues de ces versions precises. Autant ne pas lui faciliter la tache.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Masquer/attenuer l&#x27;en-tete Server et supprimer X-Powered-By (config serveur).</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">En-tetes: Server=&#x27;hcdn&#x27; X-Powered-By=&#x27;PHP/8.3.33&#x27;</p><pre class="tech-evidence">hcdn PHP/8.3.33</pre></details></div><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Content-Security-Policy present</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Bonne pratique en place : la protection &#x27;Content-Security-Policy&#x27; est activee.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">En-tete present : Content-Security-Policy: upgrade-insecure-requests</p><pre class="tech-evidence">Content-Security-Policy: upgrade-insecure-requests</pre></details></div><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Permissions-Policy present</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Bonne pratique en place : la protection &#x27;Permissions-Policy&#x27; est activee.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">En-tete present : Permissions-Policy: private-state-token-redemption=(self &quot;https://www.google.com&quot; &quot;https://www.gstatic.com&quot; &quot;https://recaptcha.net&quot; &quot;https://challenges.cloudflare.com&quot; &quot;https://hcaptcha.com&quot;), private-state-token-issuance=(self &quot;https://www.google.com&quot; &quot;https://www.gstatic.com&quot; &quot;https://recaptcha.net&quot; &quot;https://challenges.cloudflare.com&quot; &quot;https://hcaptcha.com&quot;)</p><pre class="tech-evidence">Permissions-Policy: private-state-token-redemption=(self &quot;https://www.google.com&quot; &quot;https://www.gstatic.com&quot; &quot;https://recaptcha.net&quot; &quot;https://challenges.cloudflare.com&quot; &quot;https://hcaptcha.com&quot;), private-state-token-issuanc</pre></details></div><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Redirection HTTP -&gt; HTTPS active</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Meme si un visiteur tape votre adresse sans &#x27;https&#x27;, il est automatiquement bascule vers la version securisee. Parfait.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Aucune action.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">http://rotaskitchen.com redirige vers https://rotaskitchen.com/.</p><pre class="tech-evidence">http -&gt; https://rotaskitchen.com/</pre></details></div></section><section class="category"><h2 class="cat-title">📧 Protection des emails (usurpation) <span class="cat-count">4 constats</span></h2><div class="finding" style="border-left:6px solid #e67e22;"><div class="finding-head"><span class="finding-title">⚠ DMARC present mais inactif (p=none, mode surveillance)</span><span class="badge" style="background:#e67e22;color:#ffffff;">Eleve</span></div><p class="patron">Vous avez installe l&#x27;alarme mais vous ne l&#x27;avez pas armee. Un escroc qui usurpe votre adresse passe encore. C&#x27;est une etape de transition normale, mais il faut la depasser vite.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Une fois vos envois legitimes valides dans les rapports DMARC, passer &#x27;p=none&#x27; a &#x27;p=quarantine&#x27; puis &#x27;p=reject&#x27;.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">DMARC trouve mais avec &#x27;p=none&#x27; : c&#x27;est un mode observation. Les emails usurpes ne sont NI rejetes NI mis en spam ; vous recevez juste des rapports. DMARC: v=DMARC1; p=none</p><pre class="tech-evidence">v=DMARC1; p=none</pre></details></div><div class="finding" style="border-left:6px solid #f1c40f;"><div class="finding-head"><span class="finding-title">⚠ SPF present mais trop permissif (softfail (~all))</span><span class="badge" style="background:#f1c40f;color:#4d3b00;">Moyen</span></div><p class="patron">Vous avez une barriere, mais elle est entrouverte. Un faussaire qui usurpe votre adresse a de bonnes chances que son email arrive quand meme dans la boite de vos clients. Il faut fermer completement la porte.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Passer la fin de votre SPF de &#x27;~all&#x27; (ou &#x27;?all&#x27;) a &#x27;-all&#x27; APRES avoir verifie que tous vos vrais outils d&#x27;envoi y sont listes, pour ne bloquer que les usurpateurs.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">SPF trouve mais en mode softfail (~all). En softfail/neutre, les emails suspects sont juste &#x27;marques&#x27; au lieu d&#x27;etre rejetes ; beaucoup passent quand meme. SPF: v=spf1 include:_spf.mail.hostinger.com ~all</p><pre class="tech-evidence">v=spf1 include:_spf.mail.hostinger.com ~all</pre></details></div><div class="finding" style="border-left:6px solid #7f8c8d;"><div class="finding-head"><span class="finding-title">ℹ DKIM non detecte sur les selecteurs courants (selecteur inconnu)</span><span class="badge" style="background:#7f8c8d;color:#ffffff;">Info</span></div><p class="patron">Nous n&#x27;avons pas pu confirmer la signature numerique de vos emails avec les noms les plus courants. Ce n&#x27;est pas forcement un probleme : il faut connaitre le nom exact utilise par votre fournisseur d&#x27;email pour verifier.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Demander a votre fournisseur d&#x27;email (ou dans son panneau d&#x27;administration) d&#x27;activer/verifier DKIM et de vous donner le nom du selecteur pour controle.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Aucune cle DKIM trouvee sur les selecteurs testes (default, google, selector1, selector2, k1). IMPORTANT : le nom du selecteur DKIM est propre a chaque fournisseur et peut etre quelconque ; l&#x27;absence ici ne prouve PAS qu&#x27;il n&#x27;y a pas de DKIM, seulement qu&#x27;aucun selecteur courant ne correspond.</p><pre class="tech-evidence">Selecteurs testes: default, google, selector1, selector2, k1</pre></details></div><div class="finding" style="border-left:6px solid #7f8c8d;"><div class="finding-head"><span class="finding-title">ℹ Serveurs de messagerie (MX) presents</span><span class="badge" style="background:#7f8c8d;color:#ffffff;">Info</span></div><p class="patron">Votre domaine est bien configure pour recevoir des emails professionnels. C&#x27;est aussi pour cela qu&#x27;il est important de le proteger contre l&#x27;usurpation (voir SPF et DMARC).</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Comme votre domaine sert a l&#x27;email, assurez-vous que SPF (-all) et DMARC (p=reject/quarantine) sont bien en place.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">2 serveur(s) MX trouve(s) : ce domaine recoit du courrier. MX: 10 mx2.hostinger.com. | 5 mx1.hostinger.com.</p><pre class="tech-evidence">10 mx2.hostinger.com. | 5 mx1.hostinger.com.</pre></details></div></section><section class="category"><h2 class="cat-title">🕵 Fuites de donnees publiques <span class="cat-count">3 constats</span></h2><div class="finding" style="border-left:6px solid #27ae60;"><div class="finding-head"><span class="finding-title">✅ Aucune fuite connue directement rattachee a votre domaine</span><span class="badge" style="background:#27ae60;color:#ffffff;">Bon point</span></div><p class="patron">Bonne nouvelle : le nom de domaine de votre entreprise n&#x27;apparait dans aucune des grandes fuites de donnees publiques connues a ce jour. Attention, cela ne veut pas dire que zero collaborateur n&#x27;a jamais ete touche : une adresse peut fuiter via un site externe. C&#x27;est donc rassurant, mais la vigilance sur les mots de passe reste de mise.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Maintenir de bonnes habitudes : double authentification (MFA) sur les e-mails et un gestionnaire de mots de passe pour eviter la reutilisation.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le domaine &#x27;rotaskitchen.com&#x27; (et son etiquette &#x27;rotaskitchen&#x27;) n&#x27;apparait pas dans le champ &#x27;Domain&#x27; des 1039 fuites publiques recensees par HIBP au moment de l&#x27;audit. Note : cela ne couvre PAS les fuites ou les adresses de vos employes apparaissent via un service tiers sans que le domaine soit liste.</p><pre class="tech-evidence">Domaine absent du champ &#x27;Domain&#x27; des 1039 fuites HIBP.</pre></details></div><div class="finding" style="border-left:6px solid #7f8c8d;"><div class="finding-head"><span class="finding-title">ℹ Base mondiale des fuites : 1039 piratages recenses</span><span class="badge" style="background:#7f8c8d;color:#ffffff;">Info</span></div><p class="patron">Pour donner l&#x27;echelle : il existe aujourd&#x27;hui 1039 piratages de sites connus et publics dans le monde, totalisant des milliards de mots de passe qui circulent librement. La vraie question pour votre entreprise est simple : vos employes reutilisent-ils leurs mots de passe professionnels sur des sites grand public (reseaux sociaux, boutiques, forums) ? Si oui, un seul de ces sites pirate suffit a exposer un acces a votre entreprise.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Deployer un gestionnaire de mots de passe et la double authentification (MFA) : c&#x27;est la mesure la plus rentable contre ce risque.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">HIBP recense actuellement 1039 fuites de donnees publiques a l&#x27;echelle mondiale (LinkedIn, Adobe, Dropbox, Canva, etc.). Ces fuites contiennent des milliards d&#x27;identifiants qui circulent librement.</p><pre class="tech-evidence">1039 entrees dans https://haveibeenpwned.com/api/v3/breaches</pre></details></div><div class="finding" style="border-left:6px solid #7f8c8d;"><div class="finding-head"><span class="finding-title">ℹ Verification compte-par-compte disponible en option</span><span class="badge" style="background:#7f8c8d;color:#ffffff;">Info</span></div><p class="patron">Version approfondie disponible : nous pouvons verifier, une par une, quelles adresses e-mail precises de votre entreprise ont fuite et dans quels piratages. Cette option necessite un petit abonnement payant (quelques euros) au service specialise ; elle n&#x27;est PAS activee ici pour ne rien vous facturer sans accord. A demander si vous voulez la liste nominative.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Option : souscrire une cle HIBP (~quelques $/mois) pour un rapport nominatif e-mail par e-mail. A activer uniquement sur demande.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">La verification precise, adresse e-mail par adresse e-mail, via l&#x27;endpoint HIBP &#x27;breachedaccount&#x27; necessite une cle API PAYANTE. Cet audit ne l&#x27;appelle pas (aucune depense). Avec une cle HIBP, on pourrait lister exactement quels comptes @rotaskitchen.com ont fuite et dans quelles fuites.</p><pre class="tech-evidence">Endpoint payant non appele : /api/v3/breachedaccount (cle requise).</pre></details></div></section><section class="category"><h2 class="cat-title">🐛 Failles connues des versions exposees (CVE) <span class="cat-count">4 constats</span></h2><div class="finding" style="border-left:6px solid #f1c40f;"><div class="finding-head"><span class="finding-title">⚠ Versions logicielles exposees publiquement</span><span class="badge" style="background:#f1c40f;color:#4d3b00;">Moyen</span></div><p class="patron">Afficher la version exacte de votre logiciel, c&#x27;est comme afficher la marque et le modele de votre serrure : un cambrioleur sait exactement quelle faille utiliser. Votre site annonce publiquement : PHP 8.3.33, WordPress 6.8.10, Elementor 4.1.4.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Masquez les numeros de version : Apache &#x27;ServerTokens Prod&#x27; + &#x27;ServerSignature Off&#x27;, Nginx &#x27;server_tokens off&#x27;, PHP &#x27;expose_php = Off&#x27;, et retirez la balise &lt;meta name=&quot;generator&quot;&gt;. Gardez surtout ces logiciels a jour.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">Le site divulgue les versions suivantes : PHP 8.3.33 (via X-Powered-By), WordPress 6.8.10 (via generator), Elementor 4.1.4 (via generator). Ces informations facilitent le ciblage d&#x27;exploits connus.</p><pre class="tech-evidence">Server: hcdn | X-Powered-By: PHP/8.3.33</pre></details></div><div class="finding" style="border-left:6px solid #f1c40f;"><div class="finding-head"><span class="finding-title">⚠ Failles connues pour Elementor 4.1.4 (1 CVE, pire CVSS 4.9) [correspondance approximative - A VERIFIER]</span><span class="badge" style="background:#f1c40f;color:#4d3b00;">Moyen</span></div><p class="patron">Votre site indique utiliser Elementor 4.1.4. Des failles au nom proche existent (la plus notable : CVE-2026-8825, niveau 4.9/10), mais la correspondance exacte avec VOTRE version doit etre verifiee par un technicien avant de conclure. Dans le doute, masquez la version et tenez le logiciel a jour.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Mettez Elementor 4.1.4 a jour vers une version recente et corrigee, PUIS masquez le numero de version dans les en-tetes/HTML.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">NVD remonte 1 CVE pour &#x27;elementor 4.1.4&#x27; via recherche approximative par mot-cle (a confirmer). Les plus notables :
+- CVE-2026-8825 (CVSS 4.9) : The Elementor Website Builder WordPress plugin before 4.1.4 does not properly check user permissions before returning post data through one of its REST endpoints, allowing authenti</p><pre class="tech-evidence">CVE-2026-8825 CVSS=4.9</pre></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">⚠ Aucune CVE listee pour PHP 8.3.33</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Aucune faille connue n&#x27;est ressortie pour PHP 8.3.33, mais afficher sa version reste une mauvaise habitude a corriger.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Masquez la version et maintenez ce composant a jour.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">La recherche NVD pour &#x27;php 8.3.33&#x27; ne remonte aucune CVE directement associee. La version reste toutefois exposee (voir finding d&#x27;exposition).</p><pre class="tech-evidence">php 8.3.33</pre></details></div><div class="finding" style="border-left:6px solid #3498db;"><div class="finding-head"><span class="finding-title">⚠ Aucune CVE listee pour WordPress 6.8.10</span><span class="badge" style="background:#3498db;color:#ffffff;">Faible</span></div><p class="patron">Aucune faille connue n&#x27;est ressortie pour WordPress 6.8.10, mais afficher sa version reste une mauvaise habitude a corriger.</p><div class="reco"><div class="reco-lbl">🛠 Que faire</div><div class="reco-txt">Masquez la version et maintenez ce composant a jour.</div></div><details class="tech"><summary>Detail technique (pour votre informaticien)</summary><p class="tech-detail">La recherche NVD pour &#x27;wordpress 6.8.10&#x27; ne remonte aucune CVE directement associee. La version reste toutefois exposee (voir finding d&#x27;exposition).</p><pre class="tech-evidence">wordpress 6.8.10</pre></details></div></section>
+
+  <div class="footer">
+    Audit non-intrusif base uniquement sur des donnees publiques
+    (certificat, en-tetes, DNS, fuites publiques, versions/CVE).<br>
+    Aucune attaque n'a ete menee. Realise avec l'autorisation du proprietaire du domaine.
+    <div class="brand"><!-- Espace branding : logo / cabinet / RSSI virtuel PME --></div>
+  </div>
+
+</div>
+</body>
+</html>

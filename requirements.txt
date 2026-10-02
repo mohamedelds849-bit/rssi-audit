@@ -1,0 +1,7 @@
+# Runtime
+requests>=2.28
+certifi>=2023.7.22
+dnspython>=2.3        # optional: falls back to the system `nslookup` if missing
+
+# Tests
+pytest>=7.0

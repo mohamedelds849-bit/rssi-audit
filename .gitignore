@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Tests / tooling
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Tool output: reports and score history can describe third-party domains.
+# Keep them local; only curated samples live in examples/.
+reports/
+data/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

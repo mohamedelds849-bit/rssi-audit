@@ -1,0 +1,273 @@
+{
+  "domain": "rotaskitchen.com",
+  "date": "2026-10-02 01:58:24",
+  "tool_version": "1.1.0",
+  "score": {
+    "score": 37,
+    "grade": "E",
+    "emoji": "🔴",
+    "counts": {
+      "critique": 0,
+      "eleve": 1,
+      "moyen": 4,
+      "faible": 6,
+      "ok": 7,
+      "info": 5
+    }
+  },
+  "findings": [
+    {
+      "id": "breach_domain_clean",
+      "category": "Breach",
+      "title": "Aucune fuite connue directement rattachee a votre domaine",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "Le domaine 'rotaskitchen.com' (et son etiquette 'rotaskitchen') n'apparait pas dans le champ 'Domain' des 1039 fuites publiques recensees par HIBP au moment de l'audit. Note : cela ne couvre PAS les fuites ou les adresses de vos employes apparaissent via un service tiers sans que le domaine soit liste.",
+      "patron": "Bonne nouvelle : le nom de domaine de votre entreprise n'apparait dans aucune des grandes fuites de donnees publiques connues a ce jour. Attention, cela ne veut pas dire que zero collaborateur n'a jamais ete touche : une adresse peut fuiter via un site externe. C'est donc rassurant, mais la vigilance sur les mots de passe reste de mise.",
+      "reco": "Maintenir de bonnes habitudes : double authentification (MFA) sur les e-mails et un gestionnaire de mots de passe pour eviter la reutilisation.",
+      "evidence": "Domaine absent du champ 'Domain' des 1039 fuites HIBP."
+    },
+    {
+      "id": "breach_world_total",
+      "category": "Breach",
+      "title": "Base mondiale des fuites : 1039 piratages recenses",
+      "severity": "info",
+      "status": "info",
+      "detail": "HIBP recense actuellement 1039 fuites de donnees publiques a l'echelle mondiale (LinkedIn, Adobe, Dropbox, Canva, etc.). Ces fuites contiennent des milliards d'identifiants qui circulent librement.",
+      "patron": "Pour donner l'echelle : il existe aujourd'hui 1039 piratages de sites connus et publics dans le monde, totalisant des milliards de mots de passe qui circulent librement. La vraie question pour votre entreprise est simple : vos employes reutilisent-ils leurs mots de passe professionnels sur des sites grand public (reseaux sociaux, boutiques, forums) ? Si oui, un seul de ces sites pirate suffit a exposer un acces a votre entreprise.",
+      "reco": "Deployer un gestionnaire de mots de passe et la double authentification (MFA) : c'est la mesure la plus rentable contre ce risque.",
+      "evidence": "1039 entrees dans https://haveibeenpwned.com/api/v3/breaches"
+    },
+    {
+      "id": "breach_account_check_optional",
+      "category": "Breach",
+      "title": "Verification compte-par-compte disponible en option",
+      "severity": "info",
+      "status": "info",
+      "detail": "La verification precise, adresse e-mail par adresse e-mail, via l'endpoint HIBP 'breachedaccount' necessite une cle API PAYANTE. Cet audit ne l'appelle pas (aucune depense). Avec une cle HIBP, on pourrait lister exactement quels comptes @rotaskitchen.com ont fuite et dans quelles fuites.",
+      "patron": "Version approfondie disponible : nous pouvons verifier, une par une, quelles adresses e-mail precises de votre entreprise ont fuite et dans quels piratages. Cette option necessite un petit abonnement payant (quelques euros) au service specialise ; elle n'est PAS activee ici pour ne rien vous facturer sans accord. A demander si vous voulez la liste nominative.",
+      "reco": "Option : souscrire une cle HIBP (~quelques $/mois) pour un rapport nominatif e-mail par e-mail. A activer uniquement sur demande.",
+      "evidence": "Endpoint payant non appele : /api/v3/breachedaccount (cle requise)."
+    },
+    {
+      "id": "cve_versions_exposees",
+      "category": "CVE",
+      "title": "Versions logicielles exposees publiquement",
+      "severity": "moyen",
+      "status": "warn",
+      "detail": "Le site divulgue les versions suivantes : PHP 8.3.33 (via X-Powered-By), WordPress 6.8.10 (via generator), Elementor 4.1.4 (via generator). Ces informations facilitent le ciblage d'exploits connus.",
+      "patron": "Afficher la version exacte de votre logiciel, c'est comme afficher la marque et le modele de votre serrure : un cambrioleur sait exactement quelle faille utiliser. Votre site annonce publiquement : PHP 8.3.33, WordPress 6.8.10, Elementor 4.1.4.",
+      "reco": "Masquez les numeros de version : Apache 'ServerTokens Prod' + 'ServerSignature Off', Nginx 'server_tokens off', PHP 'expose_php = Off', et retirez la balise <meta name=\"generator\">. Gardez surtout ces logiciels a jour.",
+      "evidence": "Server: hcdn | X-Powered-By: PHP/8.3.33"
+    },
+    {
+      "id": "cve_none_php_8_3_33",
+      "category": "CVE",
+      "title": "Aucune CVE listee pour PHP 8.3.33",
+      "severity": "faible",
+      "status": "warn",
+      "detail": "La recherche NVD pour 'php 8.3.33' ne remonte aucune CVE directement associee. La version reste toutefois exposee (voir finding d'exposition).",
+      "patron": "Aucune faille connue n'est ressortie pour PHP 8.3.33, mais afficher sa version reste une mauvaise habitude a corriger.",
+      "reco": "Masquez la version et maintenez ce composant a jour.",
+      "evidence": "php 8.3.33"
+    },
+    {
+      "id": "cve_none_wordpress_6_8_10",
+      "category": "CVE",
+      "title": "Aucune CVE listee pour WordPress 6.8.10",
+      "severity": "faible",
+      "status": "warn",
+      "detail": "La recherche NVD pour 'wordpress 6.8.10' ne remonte aucune CVE directement associee. La version reste toutefois exposee (voir finding d'exposition).",
+      "patron": "Aucune faille connue n'est ressortie pour WordPress 6.8.10, mais afficher sa version reste une mauvaise habitude a corriger.",
+      "reco": "Masquez la version et maintenez ce composant a jour.",
+      "evidence": "wordpress 6.8.10"
+    },
+    {
+      "id": "cve_elementor_4_1_4",
+      "category": "CVE",
+      "title": "Failles connues pour Elementor 4.1.4 (1 CVE, pire CVSS 4.9) [correspondance approximative - A VERIFIER]",
+      "severity": "moyen",
+      "status": "warn",
+      "detail": "NVD remonte 1 CVE pour 'elementor 4.1.4' via recherche approximative par mot-cle (a confirmer). Les plus notables :\n- CVE-2026-8825 (CVSS 4.9) : The Elementor Website Builder WordPress plugin before 4.1.4 does not properly check user permissions before returning post data through one of its REST endpoints, allowing authenti",
+      "patron": "Votre site indique utiliser Elementor 4.1.4. Des failles au nom proche existent (la plus notable : CVE-2026-8825, niveau 4.9/10), mais la correspondance exacte avec VOTRE version doit etre verifiee par un technicien avant de conclure. Dans le doute, masquez la version et tenez le logiciel a jour.",
+      "reco": "Mettez Elementor 4.1.4 a jour vers une version recente et corrigee, PUIS masquez le numero de version dans les en-tetes/HTML.",
+      "evidence": "CVE-2026-8825 CVSS=4.9"
+    },
+    {
+      "id": "email_spf",
+      "category": "Email",
+      "title": "SPF present mais trop permissif (softfail (~all))",
+      "severity": "moyen",
+      "status": "warn",
+      "detail": "SPF trouve mais en mode softfail (~all). En softfail/neutre, les emails suspects sont juste 'marques' au lieu d'etre rejetes ; beaucoup passent quand meme. SPF: v=spf1 include:_spf.mail.hostinger.com ~all",
+      "patron": "Vous avez une barriere, mais elle est entrouverte. Un faussaire qui usurpe votre adresse a de bonnes chances que son email arrive quand meme dans la boite de vos clients. Il faut fermer completement la porte.",
+      "reco": "Passer la fin de votre SPF de '~all' (ou '?all') a '-all' APRES avoir verifie que tous vos vrais outils d'envoi y sont listes, pour ne bloquer que les usurpateurs.",
+      "evidence": "v=spf1 include:_spf.mail.hostinger.com ~all"
+    },
+    {
+      "id": "email_dmarc",
+      "category": "Email",
+      "title": "DMARC present mais inactif (p=none, mode surveillance)",
+      "severity": "eleve",
+      "status": "warn",
+      "detail": "DMARC trouve mais avec 'p=none' : c'est un mode observation. Les emails usurpes ne sont NI rejetes NI mis en spam ; vous recevez juste des rapports. DMARC: v=DMARC1; p=none",
+      "patron": "Vous avez installe l'alarme mais vous ne l'avez pas armee. Un escroc qui usurpe votre adresse passe encore. C'est une etape de transition normale, mais il faut la depasser vite.",
+      "reco": "Une fois vos envois legitimes valides dans les rapports DMARC, passer 'p=none' a 'p=quarantine' puis 'p=reject'.",
+      "evidence": "v=DMARC1; p=none"
+    },
+    {
+      "id": "email_dkim",
+      "category": "Email",
+      "title": "DKIM non detecte sur les selecteurs courants (selecteur inconnu)",
+      "severity": "info",
+      "status": "info",
+      "detail": "Aucune cle DKIM trouvee sur les selecteurs testes (default, google, selector1, selector2, k1). IMPORTANT : le nom du selecteur DKIM est propre a chaque fournisseur et peut etre quelconque ; l'absence ici ne prouve PAS qu'il n'y a pas de DKIM, seulement qu'aucun selecteur courant ne correspond.",
+      "patron": "Nous n'avons pas pu confirmer la signature numerique de vos emails avec les noms les plus courants. Ce n'est pas forcement un probleme : il faut connaitre le nom exact utilise par votre fournisseur d'email pour verifier.",
+      "reco": "Demander a votre fournisseur d'email (ou dans son panneau d'administration) d'activer/verifier DKIM et de vous donner le nom du selecteur pour controle.",
+      "evidence": "Selecteurs testes: default, google, selector1, selector2, k1"
+    },
+    {
+      "id": "email_mx",
+      "category": "Email",
+      "title": "Serveurs de messagerie (MX) presents",
+      "severity": "info",
+      "status": "info",
+      "detail": "2 serveur(s) MX trouve(s) : ce domaine recoit du courrier. MX: 10 mx2.hostinger.com. | 5 mx1.hostinger.com.",
+      "patron": "Votre domaine est bien configure pour recevoir des emails professionnels. C'est aussi pour cela qu'il est important de le proteger contre l'usurpation (voir SPF et DMARC).",
+      "reco": "Comme votre domaine sert a l'email, assurez-vous que SPF (-all) et DMARC (p=reject/quarantine) sont bien en place.",
+      "evidence": "10 mx2.hostinger.com. | 5 mx1.hostinger.com."
+    },
+    {
+      "id": "ssl_expiry",
+      "category": "SSL",
+      "title": "Certificat SSL valide dans le temps",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "Le certificat est valide jusqu'au Dec  7 11:33:10 2026 GMT (66 jours restants).",
+      "patron": "Bonne nouvelle : le cadenas de securite de votre site est valide et loin d'expirer. Rien a faire de ce cote.",
+      "reco": "Verifier que le renouvellement automatique est bien actif.",
+      "evidence": "notAfter=Dec  7 11:33:10 2026 GMT (J-66)"
+    },
+    {
+      "id": "ssl_issuer",
+      "category": "SSL",
+      "title": "Emetteur du certificat : Let's Encrypt",
+      "severity": "info",
+      "status": "info",
+      "detail": "Le certificat a ete emis par : Let's Encrypt.",
+      "patron": "Votre certificat de securite a ete delivre par Let's Encrypt, une autorite reconnue. C'est une information, pas un probleme.",
+      "reco": "Aucune action. Info fournie a titre de transparence.",
+      "evidence": "issuer=Let's Encrypt"
+    },
+    {
+      "id": "ssl_name_match",
+      "category": "SSL",
+      "title": "Le certificat correspond bien au domaine",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "Le domaine rotaskitchen.com figure dans le certificat (rotaskitchen.com, rotaskitchen.com, www.rotaskitchen.com).",
+      "patron": "Le cadenas de securite est bien au nom de votre site. Tout est coherent, aucun avertissement pour vos visiteurs.",
+      "reco": "Aucune action.",
+      "evidence": "noms=rotaskitchen.com, rotaskitchen.com, www.rotaskitchen.com"
+    },
+    {
+      "id": "ssl_protocol",
+      "category": "SSL",
+      "title": "Protocole de chiffrement moderne : TLSv1.3",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "Le serveur negocie TLSv1.3 (moderne et sur).",
+      "patron": "La technologie de chiffrement de votre site est a jour et sure. Rien a faire de ce cote.",
+      "reco": "Aucune action.",
+      "evidence": "version negociee=TLSv1.3"
+    },
+    {
+      "id": "hdr_hsts",
+      "category": "Headers",
+      "title": "En-tete HSTS absent",
+      "severity": "moyen",
+      "status": "fail",
+      "detail": "L'en-tete de securite 'Strict-Transport-Security' est absent de la reponse.",
+      "patron": "Sans cette protection, un pirate present sur un wifi public (cafe, aeroport) peut intercepter ou detourner la connexion de vos visiteurs vers une fausse version de votre site.",
+      "reco": "Ajouter l'en-tete Strict-Transport-Security (ex: max-age=31536000; includeSubDomains).",
+      "evidence": ""
+    },
+    {
+      "id": "hdr_csp",
+      "category": "Headers",
+      "title": "Content-Security-Policy present",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "En-tete present : Content-Security-Policy: upgrade-insecure-requests",
+      "patron": "Bonne pratique en place : la protection 'Content-Security-Policy' est activee.",
+      "reco": "Aucune action.",
+      "evidence": "Content-Security-Policy: upgrade-insecure-requests"
+    },
+    {
+      "id": "hdr_xfo",
+      "category": "Headers",
+      "title": "En-tete X-Frame-Options absent",
+      "severity": "faible",
+      "status": "fail",
+      "detail": "L'en-tete de securite 'X-Frame-Options' est absent de la reponse.",
+      "patron": "Sans cette protection, votre site peut etre affiche dans un cadre cache sur un site pirate pour tromper vos visiteurs et leur faire cliquer sur des boutons a leur insu (clickjacking).",
+      "reco": "Ajouter X-Frame-Options: SAMEORIGIN (ou la directive frame-ancestors dans la CSP).",
+      "evidence": ""
+    },
+    {
+      "id": "hdr_xcto",
+      "category": "Headers",
+      "title": "En-tete X-Content-Type-Options absent",
+      "severity": "faible",
+      "status": "fail",
+      "detail": "L'en-tete de securite 'X-Content-Type-Options' est absent de la reponse.",
+      "patron": "Sans cette protection, le navigateur peut mal interpreter certains fichiers et executer du code non prevu, ce qui ouvre la porte a des attaques.",
+      "reco": "Ajouter X-Content-Type-Options: nosniff.",
+      "evidence": ""
+    },
+    {
+      "id": "hdr_referrer",
+      "category": "Headers",
+      "title": "En-tete Referrer-Policy absent",
+      "severity": "faible",
+      "status": "fail",
+      "detail": "L'en-tete de securite 'Referrer-Policy' est absent de la reponse.",
+      "patron": "Sans cette protection, votre site peut divulguer aux autres sites les adresses exactes que visitent vos utilisateurs, ce qui pose un probleme de confidentialite.",
+      "reco": "Ajouter Referrer-Policy: strict-origin-when-cross-origin.",
+      "evidence": ""
+    },
+    {
+      "id": "hdr_permissions",
+      "category": "Headers",
+      "title": "Permissions-Policy present",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "En-tete present : Permissions-Policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")",
+      "patron": "Bonne pratique en place : la protection 'Permissions-Policy' est activee.",
+      "reco": "Aucune action.",
+      "evidence": "Permissions-Policy: private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuanc"
+    },
+    {
+      "id": "hdr_server_version",
+      "category": "Headers",
+      "title": "Le serveur divulgue sa version logicielle",
+      "severity": "faible",
+      "status": "warn",
+      "detail": "En-tetes: Server='hcdn' X-Powered-By='PHP/8.3.33'",
+      "patron": "Votre site annonce publiquement les versions exactes de ses logiciels. Un pirate lit cette info pour cibler des failles connues de ces versions precises. Autant ne pas lui faciliter la tache.",
+      "reco": "Masquer/attenuer l'en-tete Server et supprimer X-Powered-By (config serveur).",
+      "evidence": "hcdn PHP/8.3.33"
+    },
+    {
+      "id": "hdr_http_redirect",
+      "category": "Headers",
+      "title": "Redirection HTTP -> HTTPS active",
+      "severity": "ok",
+      "status": "pass",
+      "detail": "http://rotaskitchen.com redirige vers https://rotaskitchen.com/.",
+      "patron": "Meme si un visiteur tape votre adresse sans 'https', il est automatiquement bascule vers la version securisee. Parfait.",
+      "reco": "Aucune action.",
+      "evidence": "http -> https://rotaskitchen.com/"
+    }
+  ]
+}

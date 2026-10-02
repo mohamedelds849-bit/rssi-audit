@@ -1,0 +1,40 @@
+
+>>> Audit passif de : rotaskitchen.com  (https://rotaskitchen.com)
+>>> Decouverte des scanners dans modules ...
+  Scanners charges : breach, cve, email_dns, ssl_headers
+
+>>> Execution des scanners ...
+  [+] breach         -> 3 finding(s)
+  [+] cve            -> 4 finding(s)
+  [+] email_dns      -> 4 finding(s)
+  [+] ssl_headers    -> 12 finding(s)
+  [+] Export JSON : examples/rotaskitchen.com.json
+
+================================================================
+  RSSI VIRTUEL PME - RESUME DE L'AUDIT
+================================================================
+  Domaine        : rotaskitchen.com
+  Date           : 2026-10-02 01:58
+  Findings total : 23
+
+  SCORE   : 🔴  37 / 100   (note E)
+  EVOLUTION : premier audit (aucun historique precedent)
+
+  Repartition par gravite :
+     - eleve     : 1
+     - moyen     : 4
+     - faible    : 6
+     - ok        : 7
+     - info      : 5
+
+  TOP 3 PROBLEMES A TRAITER :
+     1. [eleve] DMARC present mais inactif (p=none, mode surveillance)
+        -> Une fois vos envois legitimes valides dans les rapports DMARC, passer 'p=none' a 'p=quarantine' puis 'p=reject'.
+     2. [moyen] En-tete HSTS absent
+        -> Ajouter l'en-tete Strict-Transport-Security (ex: max-age=31536000; includeSubDomains).
+     3. [moyen] Versions logicielles exposees publiquement
+        -> Masquez les numeros de version : Apache 'ServerTokens Prod' + 'ServerSignature Off', Nginx 'server_tokens off', PHP 'expose_php = Off', et retirez la balise <meta name="generator">. Gardez surtout ces logiciels a jour.
+
+  RAPPORT HTML   : examples/rapport_rotaskitchen.com.html
+================================================================
+
